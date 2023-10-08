@@ -1,23 +1,15 @@
-import "@/styles/globals.css";
+// pages/_app.js
 
-import { SessionProvider } from "next-auth/react";
-import { IBM_Plex_Sans_KR } from "next/font/google";
+import "@/styles/globals.css"; // Global styles
+import Header from "@/components/Header"; // Global header component
 
-const ibmplex = IBM_Plex_Sans_KR({
-  // preload: true, 기본값
-  subsets: ["latin"], // 또는 preload: false
-  weight: ["300", "400", "500", "700"], // 가변 폰트가 아닌 경우, 사용할 fontWeight 배열
-});
-
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}) {
+function MyApp({ Component, pageProps }) {
   return (
-    <main className={ibmplex.className}>
-      <SessionProvider session={session}>
-        <Component {...pageProps} />
-      </SessionProvider>
-    </main>
+    <div>
+      <Header />
+      <Component {...pageProps} />
+    </div>
   );
 }
+
+export default MyApp;
