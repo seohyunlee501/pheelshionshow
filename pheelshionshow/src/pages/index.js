@@ -57,7 +57,7 @@ function HomePage() {
         {" "}
         {/* Add margin to ensure messages appear below the header */}
         {data.map((item, index) => (
-          <span
+          <div
             key={index}
             onClick={() => handleZoomMessage(item.message)}
             style={{
@@ -120,7 +120,7 @@ function HomePage() {
               <span className="relative z-10">{item.name}</span>
             </svg>
             <span className="relative z-10">{item.name}</span>
-          </span>
+          </div>
         ))}
         {/* Render modal when a message is clicked */}
         {selectedMessage && (
