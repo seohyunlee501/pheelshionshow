@@ -130,6 +130,7 @@ function HomePage() {
                 left: `${finalX}px`, // Apply random x coordinate
                 top: `${finalY}px`, // Apply random y coordinate
               }}
+
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
