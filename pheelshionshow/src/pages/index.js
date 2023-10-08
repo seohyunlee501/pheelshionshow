@@ -53,7 +53,7 @@ function HomePage() {
   return (
     <div>
       <Header />
-      <div className="mt-32">
+      <div className="mt-32 flex flex-wrap">
         {" "}
         {/* Add margin to ensure messages appear below the header */}
         {data.map((item, index) => (
@@ -65,7 +65,6 @@ function HomePage() {
               padding: "10px",
               marginBottom: "10px",
             }}
-            className="inline"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -117,9 +116,8 @@ function HomePage() {
                   />
                 </filter>
               </defs>
-              <span className="relative z-10">{item.name}</span>
             </svg>
-            <span className="relative z-10">{item.name}</span>
+            <span>{item.name}</span>
           </span>
         ))}
         {/* Render modal when a message is clicked */}
