@@ -21,7 +21,7 @@ html {
   min-height: 100vh;
 }
 
-body {
+html {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
     to bottom,

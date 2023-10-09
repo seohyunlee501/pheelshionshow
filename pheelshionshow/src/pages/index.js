@@ -56,66 +56,42 @@ function HomePage() {
     fetchData();
   }, []);
 
-  const MIN_DISTANCE = 50; // Adjust the minimum distance as needed
+  const ROW_WIDTH = 360; // Adjust the row width as needed
+  const ITEM_WIDTH = 120; // Adjust the item width as needed
 
-  const getRandomPosition = () => {
-    const randomX = Math.random() * (window.innerWidth - 200);
-    const randomY = Math.random() * (window.innerHeight - 200);
-
-    // Check if the random position is too close to existing elements
-    const isTooClose = data.some((item) => {
-      const dx = item.position.x - randomX;
-      const dy = item.position.y - randomY;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      return distance < MIN_DISTANCE;
-    });
-
-    // If it's too close, generate a new position
-    if (isTooClose) {
-      return getRandomPosition();
-    }
-
-    return { x: randomX, y: randomY };
-  };
-
-  const ROW_WIDTH = 300; // Adjust the row width as needed
-  const ITEM_WIDTH = 100; // Adjust the item width as needed
-  const ITEM_HEIGHT = 100; // Adjust the item height as needed
-  const VERTICAL_MARGIN = 10; // Adjust the vertical margin as needed
-
-  const MAX_RANDOM_OFFSET_X = 20; // Maximum random offset for X position
-  const MAX_RANDOM_OFFSET_Y = 20; // Maximum random offset for Y position
+  const MAX_RANDOM_OFFSET_X = 10; // Maximum random offset for X position
+  const MAX_RANDOM_OFFSET_Y = 10; // Maximum random offset for Y position
   const MAX_RANDOM_ROTATION = 20; // Maximum random rotation angle in degrees
 
-  // Calculate the number of items per row
-  // const itemsPerRow = Math.floor(ROW_WIDTH / ITEM_WIDTH);
-  const itemsPerRow = 3;
+  // // Calculate the number of items per row
+  const itemsPerRow = Math.floor(ROW_WIDTH / ITEM_WIDTH);
+  // const itemsPerRow = 3;
 
   return (
+    //<div className="bg-scroll pt-100">
     <div>
-      <Header />
-      <div className="mt-32 flex flex-wrap">
+      <Header className="fixed top-0 left-0" />
+
+      <div className="pt-32 flex flex-wrap">
         {" "}
         {/* Add margin to ensure messages appear below the header */}
         {data.map((item, index) => {
           const rowIndex = Math.floor(index / itemsPerRow);
           const columnIndex = index % itemsPerRow;
 
-          // Calculate the fixed position
-          const x = columnIndex * (ITEM_WIDTH + 10); // 10 for horizontal spacing
-          const y = 120 + rowIndex * (ITEM_HEIGHT + VERTICAL_MARGIN);
-
-          // Generate random offsets for X and Y
-          const randomOffsetX = Math.random() * MAX_RANDOM_OFFSET_X;
-          const randomOffsetY = Math.random() * MAX_RANDOM_OFFSET_Y;
-
           // Apply the random offsets to the fixed position
-          const finalX = x + randomOffsetX;
-          const finalY = y + randomOffsetY;
+          const finalX =
+            ((columnIndex % 2) - (rowIndex % 2) + 1) * MAX_RANDOM_OFFSET_X;
+
+          const finalY =
+            ((columnIndex % 2) - (rowIndex % 2) + 1) * MAX_RANDOM_OFFSET_Y - 20;
 
           // Generate a random rotation angle
           const randomRotation =
-            Math.random() * MAX_RANDOM_ROTATION * (-1) ** rowIndex;
+            ((rowIndex + columnIndex + 1) *
+              MAX_RANDOM_ROTATION *
+              (-1) ** (rowIndex + columnIndex)) %
+            25;
 
           return (
             <span
@@ -126,16 +102,15 @@ function HomePage() {
               }}
               style={{
                 cursor: "pointer",
-                position: "absolute",
+                position: "relative",
                 left: `${finalX}px`, // Apply random x coordinate
                 top: `${finalY}px`, // Apply random y coordinate
               }}
-
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="138"
-                height="135"
+                width="120"
+                height="120"
                 viewBox="0 0 138 135"
                 fill="none"
                 style={{
@@ -211,6 +186,7 @@ function HomePage() {
         )}
       </div>
     </div>
+    //</div>
   );
 }
 

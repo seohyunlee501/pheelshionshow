@@ -1,7 +1,6 @@
 // pages/_app.js
 
 import "@/styles/globals.css"; // Global styles
-import Header from "@/components/Header"; // Global header component
 // pages/_app.js
 import { Hahmlet } from "next/font/google"; // 해당 폰트의 함수를 사용합니다.
 
@@ -12,7 +11,6 @@ function MyApp({ Component, pageProps }) {
     <main className={hahmlet.className}>
       {" "}
       {/* className을 통해 하위 컴포넌트에서 폰트를 사용합니다. */}
-      <Header />
       <Component {...pageProps} />
     </main>
   );
