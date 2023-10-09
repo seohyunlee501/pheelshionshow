@@ -31,7 +31,7 @@ function ModalComponent({ isOpen, onClose, message, name }) {
             ×
           </button>
         </div>
-        <p className="py-3 text-lg">{message}</p>
+        <p className="py-3 text-lg text-black">{message}</p>
       </div>
     </Modal>
   );
