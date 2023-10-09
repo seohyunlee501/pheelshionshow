@@ -5,9 +5,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <Header className="flex fixed top-0 left-0" />
       <body>
-        <Main className="bg-scroll pt-100" />
+        <Main />
         <NextScript />
       </body>
     </Html>
