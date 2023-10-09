@@ -184,6 +184,7 @@ function HomePage() {
           />
         )}
       </div>
+      <div className="h-4" />
       <Header className="fixed top-0 left-0" />
     </div>
 
