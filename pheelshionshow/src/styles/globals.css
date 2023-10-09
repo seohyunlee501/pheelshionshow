@@ -5,14 +5,16 @@
 :root {
   --foreground-rgb: 28, 34, 82;
   --background-start-rgb: 28, 34, 82;
-  --background-end-rgb: 85, 58, 95;
+  --background-middle-rgb: 111, 52, 107;
+  --background-end-rgb: 183, 76, 110;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 28, 34, 82;
     --background-start-rgb: 28, 34, 82;
-    --background-end-rgb: 85, 58, 95;
+    --background-middle-rgb: 111, 52, 107;
+    --background-end-rgb: 183, 76, 110;
   }
 }
 
@@ -25,7 +27,8 @@ html {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
     to bottom,
-    rgb(var(--background-start-rgb)),
+    rgb(var(--background-start-rgb)) 40%,
+    rgb(var(--background-middle-rgb)),
     rgb(var(--background-end-rgb))
   );
 }
