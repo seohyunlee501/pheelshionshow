@@ -70,8 +70,6 @@ function HomePage() {
   return (
     //<div className="bg-scroll pt-100">
     <div>
-      <Header className="fixed top-0 left-0" />
-
       <div className="pt-32 flex flex-wrap">
         {" "}
         {/* Add margin to ensure messages appear below the header */}
@@ -81,7 +79,7 @@ function HomePage() {
 
           // Apply the random offsets to the fixed position
           const finalX =
-            ((columnIndex % 2) - (rowIndex % 2) + 1) * MAX_RANDOM_OFFSET_X;
+            ((columnIndex % 2) - (rowIndex % 2)) * MAX_RANDOM_OFFSET_X;
 
           const finalY =
             ((columnIndex % 2) - (rowIndex % 2) + 1) * MAX_RANDOM_OFFSET_Y - 20;
@@ -106,6 +104,7 @@ function HomePage() {
                 left: `${finalX}px`, // Apply random x coordinate
                 top: `${finalY}px`, // Apply random y coordinate
               }}
+              className="inline-block w-24 h-24 m-3"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +184,9 @@ function HomePage() {
           />
         )}
       </div>
+      <Header className="fixed top-0 left-0" />
     </div>
+
     //</div>
   );
 }
